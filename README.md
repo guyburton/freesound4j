@@ -8,7 +8,7 @@ It will initially support v1 of the api (http://www.freesound.org/docs/api/overv
 Usage
 =====
 
-The API is represented uing JAX-RS annotations and JAXB annotations. The api client uses the Apache CXF JAX-RS client and the Jackson JSON library.
+The API is represented uing JAX-RS annotations and Jackson JSON annotations. The api client uses the Apache CXF JAX-RS client and the Jackson JSON library.
 
 API Key
 =======
@@ -21,4 +21,4 @@ http://www.freesound.org/docs/api/
 License
 =======
 
-Something very free, naturally
+Something very free, naturally...
