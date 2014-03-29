@@ -1,7 +1,5 @@
 package org.freesound.apiv1;
 
-import org.hamcrest.Matchers;
-import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -9,9 +7,7 @@ import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.hasProperty;
-import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -20,13 +16,12 @@ import static org.junit.Assert.assertThat;
  */
 public class TestSoundResource {
 
-    public static final String API_KEY = "34ba7ed70739486b88e4018ce6606134";
     private static Sound sound;
 
     @BeforeClass
     public static void doQuery() {
         FreeSoundApi api = FreeSoundApi.Factory.create();
-        sound = api.getSound(83295, API_KEY);
+        sound = api.getSound(83295, TestApiKey.API_KEY);
     }
 
     @Test
