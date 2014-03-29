@@ -12,8 +12,12 @@ The API is represented uing JAX-RS annotations and Jackson JSON annotations. The
 
 ```
     FreeSoundApi api = FreeSoundApi.Factory.create();
+    
     Sound sound = api.getSound(83295, API_KEY);
     User user = sound.getUser();
+    
+    SoundResultSet test = api.search("test query", API_KEY);
+    List<Sound> sounds = test.getSounds();
 ```
 
 API Key
