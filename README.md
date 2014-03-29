@@ -10,6 +10,12 @@ Usage
 
 The API is represented uing JAX-RS annotations and Jackson JSON annotations. The api client uses the Apache CXF JAX-RS client and the Jackson JSON library.
 
+```
+    FreeSoundApi api = FreeSoundApi.Factory.create();
+    Sound sound = api.getSound(83295, API_KEY);
+    User user = sound.getUser();
+```
+
 API Key
 =======
 
