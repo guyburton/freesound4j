@@ -61,4 +61,7 @@ public interface Sound {
 
     @JsonProperty
     Date getCreated();
+
+    @JsonProperty
+    GeoTag getGeoTag();
 }
