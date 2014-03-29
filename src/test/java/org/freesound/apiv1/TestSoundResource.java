@@ -5,6 +5,10 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasProperty;
 import static org.hamcrest.Matchers.notNullValue;
@@ -16,7 +20,7 @@ import static org.junit.Assert.assertThat;
  */
 public class TestSoundResource {
 
-    public static final String API_KEY = "YOUR API KEY HERE";
+    public static final String API_KEY = "34ba7ed70739486b88e4018ce6606134";
     private static Sound sound;
 
     @BeforeClass
@@ -35,5 +39,16 @@ public class TestSoundResource {
     public void checkComplexUserProperty() {
         assertThat(sound.getUser(), notNullValue());
         assertThat(sound.getUser(), hasProperty("username", equalTo("digifishmusic")));
+    }
+
+    @Test
+    public void checkBigDecimalProperty() {
+        assertThat(sound.getDuration(), equalTo(new BigDecimal("48.548956916100003")));
+    }
+
+    @Test
+    public void checkDateProperty() throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        assertThat(sound.getCreated(), equalTo(format.parse("2009-11-13 10:01:01")));
     }
 }
