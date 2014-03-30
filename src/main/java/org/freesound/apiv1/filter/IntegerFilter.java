@@ -14,7 +14,7 @@ public class IntegerFilter extends Filter {
     }
 
     public IntegerFilter lessThan(int value) {
-        setRangeValue(FilterBuilder.ANY, getIntValue(value));
+        setRangeValue(ANY, getIntValue(value));
         return this;
     }
 
@@ -24,7 +24,7 @@ public class IntegerFilter extends Filter {
     }
 
     public IntegerFilter greaterThan(int value) {
-        setRangeValue(getIntValue(value), FilterBuilder.ANY);
+        setRangeValue(getIntValue(value), ANY);
         return this;
     }
 
@@ -33,10 +33,6 @@ public class IntegerFilter extends Filter {
             return "*";
         }
         return Integer.toString(value1);
-    }
-
-    private String getBigDecimalValue(BigDecimal value) {
-        return value.stripTrailingZeros().toPlainString();
     }
 
 }
