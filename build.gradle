@@ -7,7 +7,7 @@ repositories {
 }
 
 jar {
-    baseName = 'freesound-mpc'
+    baseName = 'freesound4j'
     version =  '0.1.0'
 }
 
