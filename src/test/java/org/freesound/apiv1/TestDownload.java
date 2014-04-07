@@ -1,20 +1,13 @@
 package org.freesound.apiv1;
 
-import org.apache.cxf.message.Attachment;
-import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 
 /**
  * Requires FreeSound.org to be up!
@@ -33,7 +26,7 @@ public class TestDownload {
     public void downloadsFile() throws IOException {
         InputStream download = api.download(165277, TestApiKey.API_KEY);
         try {
-            assertTrue(download.available() > 100000);
+            assertThat(download.available(), greaterThan(0));
         } finally {
             download.close();
         }
