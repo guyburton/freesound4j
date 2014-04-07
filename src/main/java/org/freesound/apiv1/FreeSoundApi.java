@@ -4,8 +4,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 import com.fasterxml.jackson.module.mrbean.MrBeanModule;
 import org.apache.cxf.jaxrs.client.JAXRSClientFactory;
+import org.apache.cxf.jaxrs.ext.multipart.Multipart;
+import org.apache.cxf.message.Attachment;
 
 import javax.ws.rs.*;
+import java.io.File;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -59,6 +63,12 @@ public interface FreeSoundApi {
     @Produces("application/json")
     @Path("/sounds/search/")
     public SoundResultSet search(@QueryParam("q") String query, @QueryParam("api_key") String apiKey);
+
+    @GET
+    @Path("/sounds/{soundId}/serve/")
+    @Produces("multipart/mixed")
+    @Multipart(value = "root", type = "application/octet-stream")
+    public InputStream download(@PathParam("soundId") int soundId, @QueryParam("api_key") String apiKey);
 
     public static final class Factory {
 
