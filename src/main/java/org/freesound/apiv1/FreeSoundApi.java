@@ -5,10 +5,8 @@ import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 import com.fasterxml.jackson.module.mrbean.MrBeanModule;
 import org.apache.cxf.jaxrs.client.JAXRSClientFactory;
 import org.apache.cxf.jaxrs.ext.multipart.Multipart;
-import org.apache.cxf.message.Attachment;
 
 import javax.ws.rs.*;
-import java.io.File;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -24,7 +22,7 @@ public interface FreeSoundApi {
      * Retrieves all data for the sound with the specified ID
      * @param soundId The id of the sound to retrieve
      * @param apiKey  The API key to use for the request
-     * @return
+     * @return A sound object containing data
      */
     @GET
     @Produces("application/json")
@@ -74,14 +72,13 @@ public interface FreeSoundApi {
 
         /**
          * Create an instance of the API
-         * @return
          */
         public static FreeSoundApi create() {
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.registerModule(new MrBeanModule());
             objectMapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
 
-            List<Object> providers = new ArrayList();
+            List<Object> providers = new ArrayList<Object>();
             providers.add(new JacksonJsonProvider(objectMapper, JacksonJsonProvider.BASIC_ANNOTATIONS));
             return JAXRSClientFactory.create(URL, FreeSoundApi.class, providers);
         }
