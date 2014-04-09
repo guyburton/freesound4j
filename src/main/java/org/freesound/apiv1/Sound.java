@@ -59,4 +59,7 @@ public interface Sound {
 
     @JsonProperty
     GeoTag getGeoTag();
+
+    @JsonProperty
+    String getLicense();
 }
